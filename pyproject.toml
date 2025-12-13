@@ -1,0 +1,83 @@
+[project]
+name = "snack_error_game"
+version = "2.0.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.13"
+authors = [
+    { name = "Nikolay Ignatev", email = "walrussociopath@gmail.com" }
+]
+dependencies = [
+    "aiogram>=3.23.0",
+    "loguru>=0.7.3",
+    "pydantic-settings>=2.12.0",
+    "pytelegrambotapi>=4.29.1",
+    "ujson>=5.11.0",
+    "uvloop>=0.22.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.19.0",
+  "ruff>=0.14.8",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+  "ANN", 
+  "S", 
+  "FBT", 
+  "B", 
+  "A", 
+  "C4", 
+  "DTZ", 
+  "ISC", 
+  "ICN", 
+  "LOG", 
+  "G", 
+  "PIE", 
+  "T20", 
+  "PYI",
+  "PT",
+  "Q",
+  "RET",
+  "SIM",
+  "SLOT",
+  "TID",
+  "TD",
+  "TC",
+  "ARG",
+  "PTH",
+  "FLY",
+  "I",
+  "C90",
+  "N",
+  "PERF",
+  "E",
+  "W",
+  "DOC",
+  "D",
+  "F",
+  "PGH",
+  "PL",
+  "PLE",
+  "PLR",
+  "PLW",
+  "UP",
+  "FURB",
+  "RUF",
+  "TRY",
+]
+ignore = [
+  # We do not want to litter the code with tautological docstrings 
+  "D102",
+  "D107",
+  "D101",
+  "D100",
+  # I think it has no value always annotate __init__ as return None
+  "ANN204",
+  "F401", 
+]
