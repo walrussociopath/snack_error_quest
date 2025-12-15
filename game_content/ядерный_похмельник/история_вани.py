@@ -1,22 +1,12 @@
 
 from tg_quest import Attrs, Condition, Node, Reaction, Story
 
-
 cond = Condition.all_reactions_used(
     next="#13",
     else_="#12",
 )
 
 
-Story(
-    code="ваня",
-    start_node=Node(
-        content=
-    )
-    nods=(
-
-    )
-)
 _NODES = (
     Node(
         code="#1",

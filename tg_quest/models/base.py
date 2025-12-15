@@ -1,12 +1,11 @@
+import logging
 from typing import Any
 
 from pydantic import BaseModel, Field
+
 from tg_quest.registry import REGISTRY
 
-import logging 
-
-
-logger = logging.getLogger('tg_quest.models.base')
+logger = logging.getLogger("tg_quest.models.base")
 
 
 GLOBAL_ENTITIES_COUNT: int = 0
@@ -24,10 +23,10 @@ class BaseGameEntity(BaseModel, frozen=True):
     def model_post_init(self, context: Any) -> None:
         entity_name = self.__class__.__name__
         if entity_name == "Node":
-            logger.info('Node %s with code %s registered', self.content, self.code) # type: ignore
+            logger.info("Node %s with code %s registered", self.content, self.code) # type: ignore
             REGISTRY.register_node(self) # type: ignore
         elif entity_name == "Reaction":
-            logger.info('Reaction %s with code %s registered', self.title, self.code) # type: ignore
+            logger.info("Reaction %s with code %s registered", self.title, self.code) # type: ignore
             REGISTRY.register_reaction(self) # type: ignore
 
 

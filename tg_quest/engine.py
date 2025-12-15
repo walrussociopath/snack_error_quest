@@ -1,14 +1,14 @@
 import asyncio
-from collections.abc import AsyncIterator
 import logging
-from tg_quest.models import Node
+from collections.abc import AsyncIterator
 
+from tg_quest.models import Node
 from tg_quest.registry import REGISTRY, Registry
 
-logger = logging.getLogger('tg_quest.engine')
+logger = logging.getLogger("tg_quest.engine")
 
 
-from tg_quest.models import Condition, Reaction, PlayerNode, Player, StoryRuntimeError
+from tg_quest.models import Condition, Player, PlayerNode, Reaction, StoryRuntimeError
 
 
 class StoryEngine:
@@ -18,8 +18,8 @@ class StoryEngine:
         self._enable_wait = enable_wait
 
     async def walk_to_node(
-        self, 
-        new_node: PlayerNode, 
+        self,
+        new_node: PlayerNode,
         player: Player,
         reaction: Reaction | None = None
     ) -> AsyncIterator[PlayerNode]:

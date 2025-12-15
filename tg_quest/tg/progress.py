@@ -1,14 +1,14 @@
 import asyncio
-from datetime import datetime, timedelta
-from copy import copy
-
-from tg_quest.models import Story, PlayerNode, Player
-from tg_quest.tg.type_aliases import CHAT_ID
-from aiogram.types import Message
 import logging
+from copy import copy
+from datetime import datetime, timedelta
 
+from aiogram.types import Message
 
-logger = logging.getLogger('tg_quest.tg.progress')
+from tg_quest.models import Player, PlayerNode, Story
+from tg_quest.tg.type_aliases import CHAT_ID
+
+logger = logging.getLogger("tg_quest.tg.progress")
 
 
 class TGPlayer:
@@ -35,7 +35,7 @@ class TGPlayer:
         return []
 
     def clear_orphaned_messages(self) -> None:
-        self.active_messages_ids[:] = self.active_messages_ids[-1:] 
+        self.active_messages_ids[:] = self.active_messages_ids[-1:]
 
 
 class InMemoryProgressStorage:
@@ -114,12 +114,12 @@ class InMemoryProgressStorage:
         if message.from_user is not None and message.from_user.username is not None:
             username = message.from_user.username
         else:
-            username = 'anonymous'
+            username = "anonymous"
         return chat_id, username
 
 
 def create_progress_storage(
-    story: Story, 
+    story: Story,
     ttl_seconds: float | None = None,
     ttl_minutes: float | None = None,
     ttl_hours: float | None = None

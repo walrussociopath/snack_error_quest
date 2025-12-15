@@ -1,10 +1,10 @@
 from collections.abc import Sequence
 from dataclasses import dataclass
 
-from tg_quest.models.story import Story
 from tg_quest.models.base import EntityCode
 from tg_quest.models.player.node import PlayerNode
 from tg_quest.models.reaction import Reaction
+from tg_quest.models.story import Story
 
 
 @dataclass

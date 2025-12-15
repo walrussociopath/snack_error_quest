@@ -15,7 +15,7 @@ class Reaction(BaseGameEntity, frozen=True):
     def once(
         cls,
         title: str,
-        next: str | Condition    
+        next: str | Condition
     ) -> "Reaction":
         return cls(
             title=title,

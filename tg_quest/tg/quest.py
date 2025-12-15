@@ -1,20 +1,19 @@
 import logging
 
-from aiogram.enums import ParseMode
 from aiogram import Bot, Dispatcher
+from aiogram.enums import ParseMode
 
 from tg_quest.engine import StoryEngine
+from tg_quest.models import Story
 from tg_quest.tg.commands import CommandsHandlerBuilder
 from tg_quest.tg.handlers.callback_service import CallbackService, register_callback_handler
 from tg_quest.tg.handlers.node_flow_service import NodeFlowService, OrphanedMessagesCleaner
 from tg_quest.tg.progress import create_progress_storage
-from tg_quest.models import Story
 from tg_quest.tg.renderer import Renderer
 
+logger = logging.getLogger("tg_quest.tg.quest")
 
-logger = logging.getLogger('tg_quest.tg.quest')
 
-    
 class Quest:
     def __init__(
         self,
@@ -35,7 +34,6 @@ class Quest:
         self._dp = dp if dp else Dispatcher(format=ParseMode)
         self._disable_wait = disable_wait
         self._disable_ttl = disable_ttl
-        print('1')
         self._progress_expired_message = progress_expired_message
         self._already_started_text = already_started_text
         self._progress_storage = create_progress_storage(
@@ -45,7 +43,6 @@ class Quest:
             ttl_hours=ttl_hours,
         )
         self._story_engine = StoryEngine(enable_wait=not self._disable_wait)
-        print('2')
         self._node_messenger = NodeFlowService(
             story_engine=self._story_engine,
             progress_storage=self._progress_storage,

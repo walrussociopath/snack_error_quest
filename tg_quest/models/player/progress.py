@@ -1,5 +1,5 @@
-from tg_quest.models.player.story import PlayerStory
 from tg_quest.models.player.node import PlayerNode
+from tg_quest.models.player.story import PlayerStory
 from tg_quest.models.reaction import Reaction
 from tg_quest.models.story import Story
 
@@ -19,7 +19,7 @@ class Player:
         self.state.prev_node = self.current_node
         self.state.current_node = current_node
 
-    def move_to(self, new_node: PlayerNode, reaction: Reaction | None = None):     
+    def move_to(self, new_node: PlayerNode, reaction: Reaction | None = None):
         if reaction:
-            self.current_node.apply_reaction(reaction)   
+            self.current_node.apply_reaction(reaction)
         self._set_current_node(new_node)
